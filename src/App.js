@@ -3,29 +3,29 @@ import React from 'react';
 import './App.css';
 
 function App() {
-  const [posts, setPosts] = React.useState([])
-  const [users, setUsers] = React.useState([])
-  const [comments, setComments] = React.useState([])
+  const [postsData, setPostsData] = React.useState([])
+  const [usersData, setUsersData] = React.useState([])
+  const [commentsData, setCommentsData] = React.useState([])
 
   React.useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/posts')
       .then(res => res.json())
-      .then(data => setPosts(data))
+      .then(data => setPostsData(data))
   },[])
 
   React.useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(res => res.json())
-      .then(data => setUsers(data))
+      .then(data => setUsersData(data))
   },[])
 
   React.useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/comments')
       .then(res => res.json())
-      .then(data => setComments(data))
+      .then(data => setCommentsData(data))
   },[])
 
-  const postsData = posts.map(item => {
+  const posts = postsData.map(item => {
     return (
       <Post
         item={item}
@@ -36,7 +36,7 @@ function App() {
   return (
     <div className='app-body'>
       <div>
-        {postsData}
+        {posts}
       </div>
     </div>
   );
