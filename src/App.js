@@ -1,62 +1,57 @@
-import Post from './components/Post'
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Post from './components/Post';
 import './App.css';
 
-function App() {
-  // const [postsData, setPostsData] = React.useState([])
-  // const [usersData, setUsersData] = React.useState([])
-  // const [commentsData, setCommentsData] = React.useState([])
-  const [data, setData] = React.useState([])
+const App = () => {
+  const [data, setData] = useState([]); // Když kouknu na typ přes typeof tak je to object, proč?
 
-  let postsData = fetch('https://jsonplaceholder.typicode.com/posts')
-  let usersData = fetch('https://jsonplaceholder.typicode.com/users')
-  let commentsData = fetch('https://jsonplaceholder.typicode.com/comments')
+  useEffect(() => {
+    const urls = [
+      'https://jsonplaceholder.typicode.com/posts',
+      'https://jsonplaceholder.typicode.com/users',
+      'https://jsonplaceholder.typicode.com/comments'
+    ];
+    
+    const fetchData = async () => {
+      try {
+        const resultArray = await Promise.all(
+          urls.map(async (url) => {
+            const response = await fetch(url);
+            return response.json();
+          })
+        );
+        setData(resultArray); // Tu by som očakával prepísanie dát v data state
+      } catch (error) {
+        console.log('Error:', error);
+      }
+    };
 
-  React.useEffect(() => {
-    Promise.all([postsData, usersData, commentsData])
-    .then( files => {
-      files.forEach(file => {
-        process(file.json()) //Aj keď fetch prebehne tak tu to vyhodí error. Asi kvôli viacnásobnému volaniu .then .catch
-      })
-    })
-    .catch(() => {
-      console.log('Data fetching failed.')
-    })
-  },[])
+    fetchData();
+  }, []);
 
-  const process = (prom) => {
-    prom.then(f => {
-      console.log(f)
-    })
-  }
 
-  // React.useEffect(() => {
-  //   fetch('https://jsonplaceholder.typicode.com/users')
-  //     .then(res => res.json())
-  //     .then(data => setUsersData(data))
-  // },[])
+  console.log(data[0]);
 
-  // React.useEffect(() => {
-  //   fetch('https://jsonplaceholder.typicode.com/comments')
-  //     .then(res => res.json())
-  //     .then(data => setCommentsData(data))
-  // },[])
-
-  // const posts = postsData.map(item => {
-  //   return (
-  //     <Post
-  //       item={item}
-  //     />
-  //   )
-  // })
+  const posts = data[0] && data[1] ? data[0].map((item, index) => {
+    const user = data[1].find(user => user.id === item.userId);
+    const numOfComments = data[2].filter(comment => comment.postId === item.id).length;
+    return (
+      <Post
+        key={index}
+        item={item}
+        user={user}
+        numOfComments={numOfComments}
+      />
+    )
+  }) : [];
 
   return (
-    <div className='app-body'>
+    <div className='container'>
       <div>
-        {/* {posts} */}
+        {posts}
       </div>
     </div>
   );
-}
+};
 
 export default App;
