@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Post from './components/Post';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import PostDetail from './components/PostDetail';
 
 const App = () => {
   const [data, setData] = useState([]); // Když kouknu na typ přes typeof tak je to object, proč?
@@ -46,11 +48,17 @@ const App = () => {
   }) : [];
 
   return (
-    <div className='container'>
-      <div>
-        {posts}
-      </div>
-    </div>
+    <>
+        <div className='container'>
+          <div>
+            {posts}
+          </div>
+        </div>
+      {/* <Routes>
+        <Route path='/' element={} />
+        <Route path='/:id' element={<PostDetail/>} />
+      </Routes> */}
+    </>
   );
 };
 
