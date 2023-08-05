@@ -1,7 +1,16 @@
 .container {
-  background-color: #cccccc;
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+.container-posts {
+  width: 40%;
+  margin: auto;
+}
+
+.container-posts > a {
+  text-decoration: none;
+  color: #000;
 }
 
 .post {
@@ -9,7 +18,7 @@
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: fit-content;
   padding: 12px;
   background-color: #fff;
   border-radius: 5px;
@@ -41,4 +50,46 @@
 
 .post__container > span {
   font-size: .9rem;
+}
+
+.container-post-detail {
+  width: 50%;
+  margin: auto;
+}
+
+.post-detail {
+  margin: auto;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  padding: 12px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.post-detail__title {
+  font-size: 1rem;
+}
+
+.post-detail__author {
+  font-size: 0.8rem;
+  margin-top: 10px;
+}
+
+.post-detail__body {
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.container-commnents {
+  width: 100%;
+  margin: auto;
+  background-color: blue;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment {
+  
 }

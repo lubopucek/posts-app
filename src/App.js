@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import Post from './components/Post';
+import React, { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import PostDetail from './components/PostDetail';
+import Home from './components/Home';
 
 const App = () => {
-  const [data, setData] = useState([]); // Když kouknu na typ přes typeof tak je to object, proč?
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     const urls = [
@@ -22,7 +22,7 @@ const App = () => {
             return response.json();
           })
         );
-        setData(resultArray); // Tu by som očakával prepísanie dát v data state
+        setData(resultArray);
       } catch (error) {
         console.log('Error:', error);
       }
@@ -31,35 +31,13 @@ const App = () => {
     fetchData();
   }, []);
 
-
-  console.log(data[0]);
-
-  const posts = data[0] && data[1] ? data[0].map((item, index) => {
-    const user = data[1].find(user => user.id === item.userId);
-    const numOfComments = data[2].filter(comment => comment.postId === item.id).length;
-    return (
-      <Post
-        key={index}
-        item={item}
-        user={user}
-        numOfComments={numOfComments}
-      />
-    )
-  }) : [];
-
   return (
     <>
-        <div className='container'>
-          <div>
-            {posts}
-          </div>
-        </div>
-      {/* <Routes>
-        <Route path='/' element={} />
-        <Route path='/:id' element={<PostDetail/>} />
-      </Routes> */}
+      <Routes>
+        <Route path='/' element={<Home data={data} />} />
+        <Route path='/PostDetail/:id' element={<PostDetail data={data} />} />
+      </Routes>
     </>
   );
 };
-
 export default App;
