@@ -23,11 +23,14 @@ function PostDetail(props) {
     <div className='container'>
       <div className='container-post-detail'>
         <div className='post-detail'>
-          <Link to='/'>Back to main page</Link>
+          <Link to='/' className='post-detail__back-btn'>
+            <span>Back to main page</span>
+          </Link>
           <h5 className='post-detail__title'>{post.title}</h5>
           <h6 className='post-detail__author'>{user.name}</h6>
           <p className='post-detail__body'>{post.body}</p>
           <div className='container-commnents'>
+            <h4 className='post-detail__section-title'>Comments</h4>
             <div>{commentsList}</div>
           </div>
         </div>

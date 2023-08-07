@@ -6,8 +6,8 @@ function Post(props) {
   return (
     <Link to={`/PostDetail/${props.item.id}`}>
       <div className='post'>
-        <h5 className='post__title'>{props.item.title}</h5>
-        <h6 className='post__author'>{props.user.name}</h6>
+        <span className='post__title'>{props.item.title}</span>
+        <span className='post__author'>{props.user.name}</span>
         <p className='post__body'>{props.item.body}</p>
         <div className='post__container'>
           <span className='post__showmore'>Show more...</span>

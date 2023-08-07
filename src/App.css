@@ -26,11 +26,13 @@
 
 .post__title {
   font-size: 1rem;
+  font-weight: bold;
 }
 
 .post__author {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   margin-top: 10px;
+  font-weight: bold;
 }
 
 .post__body {
@@ -49,7 +51,7 @@
 }
 
 .post__container > span {
-  font-size: .9rem;
+  font-size: .8rem;
 }
 
 .container-post-detail {
@@ -70,10 +72,11 @@
 
 .post-detail__title {
   font-size: 1rem;
+  margin-top: 20px;
 }
 
 .post-detail__author {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   margin-top: 10px;
 }
 
@@ -82,14 +85,55 @@
   margin-top: 10px;
 }
 
+.post-detail__section-title {
+  font-size: .9rem;
+  font-weight: bold;
+  color: #999;
+}
+
+.post-detail__back-btn {
+  cursor: pointer;
+  font-size: 1rem;
+  font-style: italic;
+  color: #999;
+  display: flex;
+}
+
+.post-detail__back-icon {
+  width: 20px;
+  height: auto;
+}
+
 .container-commnents {
   width: 100%;
   margin: auto;
-  background-color: blue;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
 }
 
 .comment {
-  
+  background: #fff;
+  border: 1px solid #cccccc;
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment__title {
+  font-size: .9rem;
+  font-weight: bold;
+}
+
+.comment__email {
+  font-size: .8rem;
+  text-decoration: underline;
+  margin-top: 5px;
+}
+
+.comment__body {
+  font-size: .9rem;
+  margin-top: 5px;
 }
