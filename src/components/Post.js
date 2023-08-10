@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Post(props) {
 
   return (
-    <Link to={`/PostDetail/${props.item.id}`}>
+    <Link to={`/detail/${props.item.id}`}>
       <div className='post'>
         <span className='post__title'>{props.item.title}</span>
         <span className='post__author'>{props.user.name}</span>

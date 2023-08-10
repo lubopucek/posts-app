@@ -137,3 +137,18 @@
   font-size: .9rem;
   margin-top: 5px;
 }
+
+.container-loading {
+  width: 50%;
+  margin: auto;
+}
+
+.loading {
+  margin: auto;
+  margin-top: 40px;
+  font-size: 1.rem;
+  width: fit-content;
+  padding: 12px;
+  background-color: #fff;
+  border-radius: 5px;
+}
