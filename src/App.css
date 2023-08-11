@@ -8,6 +8,18 @@
   margin: auto;
 }
 
+@media (max-width: 992px) {
+  .container-posts {
+    width: 70%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-posts {
+    width: 90%;
+  }
+}
+
 .container-posts > a {
   text-decoration: none;
   color: #000;
@@ -57,6 +69,18 @@
 .container-post-detail {
   width: 50%;
   margin: auto;
+}
+
+@media (max-width: 992px) {
+  .container-post-detail {
+    width: 70%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-post-detail {
+    width: 90%;
+  }
 }
 
 .post-detail {
